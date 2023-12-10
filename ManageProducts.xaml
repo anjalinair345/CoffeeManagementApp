@@ -1,0 +1,61 @@
+﻿<Window x:Class="CoffeeManagementApp.ManageProducts"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoffeeManagementApp"
+        mc:Ignorable="d"
+        Title="ManageProducts" Height="1000" Width="1000" >
+
+    <Grid>
+        <Image  Stretch="Fill" Source="/Image3.png" Margin="0,0,0,0"/>
+        <Label Content="Coffee Cafe" Margin="322,9,402,0" VerticalAlignment="Top" Height="92" FontFamily="Old English Text MT" FontSize="50" FontWeight="Bold"/>
+        <Button Content="Log Out" HorizontalAlignment="Left" FontSize="30" Background="{x:Null}" FontWeight="Bold" Width="132" RenderTransformOrigin="2.174,1.066" Margin="842,0,0,935" Height="45" VerticalAlignment="Bottom" Click="Button_Click_1"/>
+        <Menu HorizontalAlignment="Left" Height="54" Margin="13,79,0,0" VerticalAlignment="Top" Width="795" >
+            <MenuItem Header="Home" Height="54" Width="104" FontSize="30" BorderThickness="5" BorderBrush="RosyBrown" Click="HomeMenu"/>
+            <MenuItem Header="Manage Employee" Height="54" Width="285" FontSize="30" BorderThickness="5" BorderBrush="RosyBrown" Click="MenuItem_Click"/>
+            <MenuItem Header="Manage Products" Height="54" Width="259" FontSize="30" BorderThickness="5" BorderBrush="RosyBrown" />
+            <MenuItem Header="Reports" Height="56" Width="147" FontSize="30" BorderThickness="5" BorderBrush="RosyBrown" Click="MenuItem_Click_1" />
+
+        </Menu>
+        <Label Content="Product Name" HorizontalAlignment="Left" Margin="43,171,0,0" VerticalAlignment="Top" FontSize="20" Width="221" FontWeight="Bold"/>
+        <TextBox x:Name="txtprod" HorizontalAlignment="Left" Margin="270,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="28" RenderTransformOrigin="1.454,2.923"/>
+        <Label Content="Price" HorizontalAlignment="Left" Margin="43,221,0,0" VerticalAlignment="Top" FontSize="20" Width="222" FontWeight="Bold"/>
+        <TextBox x:Name="txtprice" HorizontalAlignment="Left" Margin="270,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" Height="28" />
+        <Label Content="Ingredients" HorizontalAlignment="Left" Margin="43,269,0,0" VerticalAlignment="Top" FontSize="20" Width="222" FontWeight="Bold"/>
+        <TextBox x:Name="txtingre" HorizontalAlignment="Left" Margin="270,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="92"/>
+        <Label x:Name="labelprice" Content="Size Available" HorizontalAlignment="Left" Margin="43,373,0,0" VerticalAlignment="Top" FontSize="20" Width="222" FontWeight="Bold"/>
+        <ComboBox x:Name="cmbsize" Text="MyCombo" HorizontalAlignment="Left" Height="31" Margin="270,380,0,0" VerticalAlignment="Top" Width="230">
+            <ComboBoxItem Content="small"></ComboBoxItem>
+            <ComboBoxItem Content="medium"></ComboBoxItem>
+            <ComboBoxItem Content="large"></ComboBoxItem>
+        </ComboBox>
+        <Button x:Name="Add" Content="Add" HorizontalAlignment="Left" Margin="385,457,0,0" VerticalAlignment="Top" Height="44" Width="115" FontSize="20" FontWeight="Bold" RenderTransformOrigin="-7.553,-3.64" Click="Add_Click"/>
+        <Button x:Name="update" Content="Update" HorizontalAlignment="Left" Height="44" Margin="146,457,0,0" VerticalAlignment="Top" Width="99" FontSize="20" FontWeight="Bold" IsEnabled="False"  Click="Update"/>
+        <Button Content="Reset" HorizontalAlignment="Left" Margin="258,457,0,0" VerticalAlignment="Top" Height="44" Width="115" FontSize="20" FontWeight="Bold" Click="Button_Click_2"/>
+        <Button Content="Log Out" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Background="{x:Null}" FontWeight="Bold" Width="222" RenderTransformOrigin="2.174,1.066" Margin="1723,10,0,0" Height="64"/>
+
+        <DataGrid x:Name="datagridprod" HorizontalAlignment="Left" Height="147" Margin="38,540,0,0" VerticalAlignment="Top" Width="660" d:ItemsSource="{d:SampleData ItemCount=10}" >
+            <!--SelectionChanged="datagridprod_SelectionChanged">-->
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Edit" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Edit" Click="Edit_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="delete" Click="Delete_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+    </Grid>
+</Window>

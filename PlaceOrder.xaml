@@ -1,0 +1,77 @@
+﻿<Window x:Class="CoffeeManagementApp.PlaceOrder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoffeeManagementApp"
+        mc:Ignorable="d"
+        Title="PlaceOrder" Height="1000" Width="1500">
+    <Grid>
+        <Image  Stretch="Fill" Height="NaN" Width="NaN" Source="/Image3.png" />
+        <Label Content="Coffee Cafe" Margin="322,9,575,0" VerticalAlignment="Top" Height="92" FontFamily="Old English Text MT" FontSize="50" FontWeight="Bold"/>
+        <Button x:Name="logout" Content="Log Out" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" Background="{x:Null}" FontWeight="Bold" Width="132" RenderTransformOrigin="2.174,1.066" Margin="1025,32,0,0" Height="46" Click="Button_logout"/>
+        <Menu HorizontalAlignment="Left" Height="54" Margin="13,79,0,0" VerticalAlignment="Top" Width="209" RenderTransformOrigin="0.481,0.83" >
+            <!--<MenuItem Header="Home" Height="54" Width="104" FontSize="30" BorderThickness="5" BorderBrush="RosyBrown" Click="MenuItem_Click_1"/>-->
+            <MenuItem Header="Place Order" Height="53" Width="209" FontSize="30" BorderThickness="5" BorderBrush="RosyBrown"/>
+
+
+
+        </Menu>
+        <Label Content="Bill No" HorizontalAlignment="Left" Margin="33,198,0,0" VerticalAlignment="Top" FontSize="30" Width="221" FontWeight="Bold"/>
+        <TextBox x:Name="txtbillno" HorizontalAlignment="Left" Margin="282,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="28" RenderTransformOrigin="1.454,2.923"/>
+        <Label Content="Coffee Type" HorizontalAlignment="Left" Margin="30,320,0,0" VerticalAlignment="Top" FontSize="30" Width="222" FontWeight="Bold" RenderTransformOrigin="0.1,-0.9"/>
+        <Label Content="Size Available" HorizontalAlignment="Left" Margin="32,390,0,0" VerticalAlignment="Top" FontSize="30" Width="222" FontWeight="Bold"/>
+
+        <ComboBox x:Name="size" Text="MyCombo" HorizontalAlignment="Left" Height="32" Margin="282,398,0,0" VerticalAlignment="Top" Width="230"/>
+        <!--<ComboBoxItem Content="small"></ComboBoxItem>
+            <ComboBoxItem Content="medium"></ComboBoxItem>
+            <ComboBoxItem Content="large"></ComboBoxItem>-->
+        <Button x:Name="Add" Content="Add" HorizontalAlignment="Left" Margin="723,497,0,0" VerticalAlignment="Top" Height="44" Width="114" FontSize="30" FontWeight="Bold" RenderTransformOrigin="-7.553,-3.64" Click="Button_Click_1"/>
+        <Label Content="Customer Name" HorizontalAlignment="Left" Margin="31,258,0,0" VerticalAlignment="Top" FontSize="30" Width="244" FontWeight="Bold"/>
+        <TextBox x:Name="txtcustomer_name" HorizontalAlignment="Left" Margin="282,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="28" RenderTransformOrigin="1.454,2.923"/>
+        <Label Content="Price of an Item" HorizontalAlignment="Left" Margin="542,245,0,0" VerticalAlignment="Top" FontSize="30" Width="237" FontWeight="Bold"/>
+        <TextBox x:Name="txtprice" HorizontalAlignment="Left" IsEnabled="false" Margin="792,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="28" RenderTransformOrigin="1.454,2.923" TextChanged="txtprice_TextChanged"/>
+        <Label Content="Quantity" HorizontalAlignment="Left" Margin="542,186,0,0" VerticalAlignment="Top" FontSize="30" Width="245" FontWeight="Bold" RenderTransformOrigin="0.603,-0.502"/>
+        <TextBox x:Name="txtquantity" HorizontalAlignment="Left" Margin="792,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="28" RenderTransformOrigin="1.454,2.923" TextChanged="txtquantity_TextChanged"/>
+        <Button Content="Place Order" HorizontalAlignment="Left" Margin="1255,1292,0,0" VerticalAlignment="Top" Height="44" Width="211" FontSize="30" FontWeight="Bold" RenderTransformOrigin="-7.553,-3.64"/>
+        <Button x:Name="Update" Content="Update" HorizontalAlignment="Left" Margin="864,497,0,0" VerticalAlignment="Top" Height="44" Width="122" FontSize="30" FontWeight="Bold" RenderTransformOrigin="-7.553,-3.64" Click="Button_Click_2"/>
+
+
+        <DataGrid x:Name="datgridplace" HorizontalAlignment="Left" Height="147" Margin="38,560,0,0" VerticalAlignment="Top" Width="948" d:ItemsSource="{d:SampleData ItemCount=10}" >
+            <!--SelectionChanged="datagridprod_SelectionChanged">-->
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Edit" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Edit" Click="Edit_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Delete" Click="Delete_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <ComboBox x:Name="type" Text="MyCombo" HorizontalAlignment="Left" Height="32" Margin="282,328,0,0" VerticalAlignment="Top" Width="230" Grid.Column="9" />
+        <!--<ComboBoxItem Content="Latte"/>
+            <ComboBoxItem Content="Espresso"/>
+            <ComboBoxItem Content="Americano"/>
+            <ComboBoxItem Content="Cappuccino"/>
+        </ComboBox>-->
+        <Label Content="Total Price" HorizontalAlignment="Left" Margin="542,309,0,0" VerticalAlignment="Top" FontSize="30" Width="237" FontWeight="Bold"/>
+        <TextBox x:Name="txttotalprice" IsEnabled="False" HorizontalAlignment="Left" Margin="792,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="28" RenderTransformOrigin="1.454,2.923"/>
+        <Label Content="Payment Type" HorizontalAlignment="Left" Margin="32,455,0,0" VerticalAlignment="Top" FontSize="30" Width="222" FontWeight="Bold"/>
+        <ComboBox x:Name="payment" Text="MyCombo" HorizontalAlignment="Left" Height="32" Margin="282,464,0,0" VerticalAlignment="Top" Width="230">
+            <ComboBoxItem Content="Card"/>
+            <ComboBoxItem Content="Cash"/>
+
+        </ComboBox>
+
+    </Grid>
+</Window>
