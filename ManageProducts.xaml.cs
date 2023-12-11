@@ -46,7 +46,7 @@ namespace CoffeeManagementApp
 
         public void LoadProd()
         {
-            SqlCommand cmd = new SqlCommand("SELECT ProductName, Price, Ingredients, Sizes FROM Products", connection);
+            SqlCommand cmd = new SqlCommand("SELECT ProductID, ProductName, Price, Ingredients, Sizes FROM Products", connection);
             DataTable dt = new DataTable();
             connection.Open();
             SqlDataReader tableInfo = cmd.ExecuteReader();
@@ -104,8 +104,8 @@ namespace CoffeeManagementApp
             if (datagridprod.SelectedItem != null)
             {
                 DataRowView dataRowView = (DataRowView)datagridprod.SelectedItem;
-                int selectedPerson = Convert.ToInt32(dataRowView.Row[0]);
-                SqlCommand cmd = new SqlCommand("Delete from Products where ProductID='" + selectedPerson + "'", connection);
+                string selectedProd= Convert.ToString(dataRowView.Row[0]);
+                SqlCommand cmd = new SqlCommand("Delete from Products where ProductName='" + selectedProd + "'", connection);
                 connection.Open();
                 cmd.ExecuteReader();
                 connection.Close();
@@ -120,8 +120,6 @@ namespace CoffeeManagementApp
         }
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (ValidateProductFields())
-            {
                 Add.IsEnabled = false;
                 update.IsEnabled = true;
                 Button button = sender as Button;
@@ -154,7 +152,7 @@ namespace CoffeeManagementApp
 
                         }
                     }
-                }
+                
             }
         }
 
@@ -225,13 +223,14 @@ namespace CoffeeManagementApp
                 {
                     DataRowView row = (DataRowView)datagridprod.SelectedItem;
 
-                    int prodId = Convert.ToInt32(row["[ProductID]"]);
-                    string prodname = txtprod.Text;
+
+                   int prodid = Convert.ToInt32(row["ProductID"]);
+                   string prodname = txtprod.Text;
                     decimal price = (decimal)Math.Round(decimal.Parse(txtprice.Text), 2);
                     string ingre = txtingre.Text;
                     string size = cmbsize.Text;
                     // Retrieve other field values as needed
-                    string query = "UPDATE Products SET Price = @Price, Ingredients = @Ingredients, Sizes = @Sizes WHERE ProductID = @ProductID";
+                    string updatequery = "UPDATE Products SET ProductName=@ProductName,Price = @Price, Ingredients = @Ingredients, Sizes = @Sizes WHERE ProductID = @ProductID";
 
                     try
                     {
@@ -240,9 +239,9 @@ namespace CoffeeManagementApp
                         {
 
 
-                            SqlCommand command = new SqlCommand(query, connection);
-                            command.Parameters.AddWithValue("ProductID", prodId);
-                            command.Parameters.AddWithValue("@ProductName", prodname);
+                            SqlCommand command = new SqlCommand(updatequery, connection);
+                            command.Parameters.AddWithValue("@ProductID", prodid);
+                            command.Parameters.AddWithValue("ProductName", prodname);
                             command.Parameters.AddWithValue("@Price", price);
                             command.Parameters.AddWithValue("@Ingredients", ingre);
                             command.Parameters.AddWithValue("@Sizes", size);

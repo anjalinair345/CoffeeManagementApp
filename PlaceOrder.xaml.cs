@@ -48,7 +48,7 @@ namespace CoffeeManagementApp
         private void Loaddata()
         {
 
-            SqlCommand cmd = new SqlCommand("SELECT BillNumber, CustomerName, Price, Quantity, TotalPrice, CoffeeType, CoffeeSize, PaymentType FROM Orders", connection);
+            SqlCommand cmd = new SqlCommand("SELECT OrderID, BillNumber, CustomerName, Price, Quantity, TotalPrice, CoffeeType, CoffeeSize, PaymentType FROM Orders", connection);
             DataTable dt = new DataTable();
             connection.Open();
             SqlDataReader tableInfo = cmd.ExecuteReader();

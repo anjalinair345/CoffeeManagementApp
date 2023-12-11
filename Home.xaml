@@ -18,9 +18,9 @@
             <MenuItem Header="Reports" Height="56" Width="147" FontSize="30" BorderThickness="5" BorderBrush="RosyBrown" Click="Reports" />
 
         </Menu>
-        <Image Margin="37,283,843,564" Source="/Image2.png" Stretch="Fill"/>
-        <Image Margin="194,283,679,564" Source="/Image4.png" Stretch="Fill"/>
-        <Image Margin="364,283,491,564" Source="/Image5.jpg" Stretch="Fill"/>
-        <Label Content=" Welcome Coffee Cafe" Margin="272,186,319,0" VerticalAlignment="Top" Height="92" FontSize="30" FontWeight="Bold"/>
+        <Image Margin="37,283,620,361" Source="/Image2.png" Stretch="Uniform"/>
+        <!--<Image Margin="404,317,272,393" Source="/Image4.png" Stretch="Uniform"/>
+        <Image Margin="700,327,-46,417" Source="/Image5.jpg" Stretch="Uniform"/>-->
+        <Label Content=" Welcome to Coffee Cafe" Margin="272,186,319,0" VerticalAlignment="Top" Height="92" FontSize="30" FontWeight="Bold"/>
     </Grid>
 </Window>
